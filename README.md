@@ -6,7 +6,9 @@ Custom argument parsing class.
 
 `
 program = Argument()
+
 program.add(label="-a", long="", range=(), type=str, target=lambda _: _, required=True, default=None, message="")
+
 result = program.parse()
 `
 
