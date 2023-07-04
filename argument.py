@@ -65,9 +65,3 @@ class Argument:
                         values[k.replace("-", "")] = v[1](sys.argv[index + 1])
 
         return values
-
-
-program = Argument()
-program.add("-a", message="bruh", default=8)
-v = program.parse()
-print(v)
