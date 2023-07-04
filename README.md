@@ -4,13 +4,11 @@ Custom argument parsing class.
 
 ## Usage
 
-`
-program = Argument()
+`program = Argument()`
 
-program.add(label="-a", long="", range=(), type=str, target=lambda _: _, required=True, default=None, message="")
+`program.add(label="-a", long="", range=(), type=str, target=lambda _: _, required=True, default=None, message="")`
 
-result = program.parse()
-`
+`result = program.parse()`
 
 - A parsing program is created by calling the class itself.
 - Then any argument can be added by _.add()_ method.
