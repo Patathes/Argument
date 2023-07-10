@@ -10,8 +10,8 @@ class Argument:
     def add(self, label: str, long: str="", range: tuple=(), type: type=str, target=lambda _: _, required: bool=True, default=None, message: str=""):
         if range != ():
             type = str
-        self.args[label] = (range, type, target, required, default, message)
-
+        self.args[label] = ((range, long), type, target, required, default, message)
+                            #the reason i did this is because i did not want to change lots of code to implement 'long'
     def help(self):
         arg_list = list()
         print(self.name)
@@ -19,7 +19,7 @@ class Argument:
         print(self.description)
         print()
         for k, v in self.args.items():
-            print(f"[{k}]: {v[-1]}")
+            print(f"[{k}] [{v[0][1]}]: {v[-1]}")
             arg_list.append(k)
         print("\n\n")
         for k in arg_list:
@@ -38,7 +38,7 @@ class Argument:
 
         for k, v in self.args.items():
             for index in range(1, len(sys.argv)):
-                if sys.argv[index] == k:
+                if sys.argv[index] == k or sys.argv[index] == v[0][1]:
                     if index + 1 >= len(sys.argv) and v[-3]:
                         print(f"Required item {k} not given")
                         print()
@@ -46,9 +46,9 @@ class Argument:
                         return
                     elif index + 1 >= len(sys.argv):
                         pass
-                    elif len(v[0]):
-                        if str(sys.argv[index + 1]) not in v[0]:
-                            print(f"Given argument {k} must be in {v[0]}")
+                    elif len(v[0][0]):
+                        if str(sys.argv[index + 1]) not in v[0][0]:
+                            print(f"Given argument {k} must be in {v[0][0]}")
                             print()
                             self.help()
                             return

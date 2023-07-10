@@ -18,4 +18,4 @@ Custom argument parsing class.
 
 Default values for the arguments are exactly as stated above.
 _long_ is to be used as another name for the added argument
-(e.g. "--argument"). But it is not implemented yet.
+(e.g. "--argument").
