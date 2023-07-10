@@ -4,7 +4,7 @@ Custom argument parsing class.
 
 ## Usage
 
-`program = Argument()`
+`program = Argument(name=sys.argv[0], description=sys.argv[0])`
 
 `program.add(label="-a", long="", range=(), type=str, target=lambda _: _, required=True, default=None, message="")`
 
@@ -19,3 +19,7 @@ Custom argument parsing class.
 Default values for the arguments are exactly as stated above.
 _long_ is to be used as another name for the added argument
 (e.g. "--argument").
+
+Class also has a _.help()_ method to print out help messages.
+That is used internally by the class when needed but can still
+be accessed by the user if needed.
